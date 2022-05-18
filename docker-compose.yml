@@ -1,16 +1,12 @@
 
 services:
-  mysql:
-    image: mysql:8
+  db:
+    image: postgres:14.1-alpine
     restart: always
     environment:
-      MYSQL_DATABASE: 'playlistDb'
-      MYSQL_ROOT_PASSWORD: '123456'
-      MYSQL_USER: 'user'
-      MYSQL_PASSWORD: '123456'
+        POSTGRES_USER=postgres
+        POSTGRES_PASSWORD=postgres
     ports:
       - 3306:3306
     volumes:
-      - my-db:/var/lib/mysql
-volumes:
-  my-db:
+      db: /var/lib/postgresql/data

@@ -10,7 +10,7 @@ plugins {
 version = "0.1"
 group = "com.playlist.aluraflix"
 
-val kotlinVersion=project.properties.get("kotlinVersion")
+val kotlinVersion= project.properties["kotlinVersion"]
 repositories {
     mavenCentral()
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
@@ -29,8 +29,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     runtimeOnly("ch.qos.logback:logback-classic")
-    runtimeOnly("com.h2database:h2")
+    implementation("org.postgresql:postgresql:42.3.5")
     implementation("io.micronaut:micronaut-validation")
+    implementation("javax.inject:javax.inject:1")
+    annotationProcessor("io.micronaut.data:micronaut-data-processor:3.4.1")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 

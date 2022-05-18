@@ -1,20 +1,23 @@
 package com.playlist.aluraflix.domain
 
+import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType.IDENTITY
 import javax.persistence.Id
 
-@Entity(name = "video")
+@Entity
 data class Video(
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private val id: Long,
+    @GeneratedValue
+    val id: Long? = null,
     @Column
-    private val title: String,
+    val title: String,
     @Column
-    private val description: String,
+    val description: String,
     @Column
-    private val url: String
-)
+    val url: String
+){
+    @Column
+    val updatedAt: LocalDateTime = LocalDateTime.now()
+}
